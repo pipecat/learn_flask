@@ -10,7 +10,7 @@ users = Table(
     Column('Id', Integer, primary_key=True, autoincrement=True),
     Column('Name', String(50), nullable=False),
 )
-
+ 
 if users.exists():
     users.drop()
 
