@@ -4,6 +4,7 @@ import flask_login
 
 app = Flask(__name__)
 db = SQLAlchemy(app)
+app.secret_key = 'hahahahaha'
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
@@ -59,7 +60,7 @@ def protected():
     user = flask_login.current_user
     return 'Login as: {}| Login_count: {}|IP: {}'.format(user.name, user.login_count, user.last_login_ip)
 
-app.secret_key = 'hahahahaha'
+
 
 if __name__ == '__main__':
     app.run(debug=True)
