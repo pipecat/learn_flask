@@ -10,7 +10,7 @@ class NameForm(Form):
     
 
 app = Flask(__name__)
-bootstrap = Bootstrap(app)
+Bootstrap(app)
 app.secret_key = 'hard to guess'
 
 @app.route('/', methods = ['POST', 'GET'])
