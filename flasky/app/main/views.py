@@ -2,14 +2,14 @@ from datetime import datetime
 from flask import render_template, session, redirect, url_for
 
 from . import main
-from .form import NameForm
+#from .forms import NameForm
 from .. import db
 from ..models import User
 
-@main.route('/', method=['POST', 'GET']
+@main.route('/', methods=['POST', 'GET'])
 def index():
-    form = NameForm
-    if form.validate_on_submit()
+    '''form = NameForm
+    if form.validate_on_submit():
         # ...
 
         return redirect(url_for('index'))
@@ -17,3 +17,5 @@ def index():
                             form=form, name=session.get('name'),
                             known=session.get('known', False),
                             current_time=datetime.utcnow())
+    '''
+    return render_template('index.html')

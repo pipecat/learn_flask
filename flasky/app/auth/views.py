@@ -1,12 +1,12 @@
 from flask import render_template, url_for, redirect, flash, request
-from flask.ext.login import login_user
+from flask.ext.login import login_user, login_required
 from . import auth
 from ..models import User
 from .forms import LoginForm
 
 @auth.route('/login', methods=['POST', 'GET'])
 def login():
-    form = LoginForm
+    form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user is not None and user.verify_password(form.password.data):
@@ -15,7 +15,8 @@ def login():
         flash('Invalid username or password')
     return render_template('auth/login.html', form=form)
 
-@auth.route('/')
+@auth.route('/logout')
+@login_required
 def logout():
     logout_user()
     flash('You have been logged out.')
