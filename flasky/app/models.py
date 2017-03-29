@@ -1,5 +1,6 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db, login_manager
+from flask.ext.login import UserMixin
 
 class Role(db.Model):
     __tablename__ = 'roles'
@@ -12,7 +13,7 @@ class Role(db.Model):
 
     
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(64), unique=True, index=True)
@@ -31,7 +32,7 @@ class User(db.Model):
     def password(self, password):
         self.password_hash = generate_password_hash(password)
 
-    def verify(self, password):
+    def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 
 
