@@ -1,2 +1,2 @@
 # learn_flask
-### code when I learning flask
+### codes when I learning flask
