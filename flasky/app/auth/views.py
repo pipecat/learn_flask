@@ -1,9 +1,11 @@
 from flask import render_template, url_for, redirect, flash, request
-from flask.ext.login import login_user, login_required, logout_user
+from flask.ext.login import login_user, login_required, logout_user, current_user
 from . import auth
-from ..models import User
-from .forms import LoginForm, RegisterForm
 from .. import db
+from ..models import User
+from ..email import send_email
+from .forms import LoginForm, RegisterForm
+
 
 
 @auth.route('/login', methods=['POST', 'GET'])
@@ -33,6 +35,10 @@ def register():
                     username=form.username.data,
                     password=form.password.data)
         db.session.add(user)
-        flash('You can login now.')
+        db.session.commit()
+        send_email(user.email, 'Confirm Your Account', 'auth/email/confirm', user=user, token=token)
+        flash('A confirmation email has been sent to you by email.')
         return redirect(url_for('auth.login'))
     return render_template('auth/register.html', form=form)
+
+@
