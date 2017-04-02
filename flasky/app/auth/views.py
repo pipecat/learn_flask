@@ -47,7 +47,7 @@ def before_request():
             and not current_user.confirmed \
             and request.endpoint[:5] != 'auth.' \
             and request.endpoint != 'static':
-        return redirect(url_for('auth.unconfirmed.html'))
+        return redirect(url_for('auth.unconfirmed'))
 
 @auth.route('/confirm/<token>')
 @login_required
@@ -72,4 +72,4 @@ def resend_confirmation():
     token = current_user.generate_confirmation_token()
     send_email(current_user.email, 'Confirm Your Account', 'auth/email/confirm', user=current_user, token=token)
     flash('A new confirmation email has been sent to you by email.')
-    return redirect(url_for('mian.index'))
+    return redirect(url_for('main.index'))
