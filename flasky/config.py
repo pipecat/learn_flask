@@ -1,5 +1,5 @@
 import os
-from email_user import mail_username, mail_password
+from admin import mail_username, mail_password
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
