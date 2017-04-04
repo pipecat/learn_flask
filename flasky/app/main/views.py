@@ -33,3 +33,10 @@ def for_admin_only():
 @permission_required(Permission.MODERATE_COMMENTS)
 def for_moderators_only():
     return "For only moderators!"
+
+@main.route('/user/<username>')
+def user(username):
+    user = User.query.filter_by(name=username)
+    if user is None:
+        abort(404)
+    return render_template('user.html', user=user)
