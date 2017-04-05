@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import render_template, session, redirect, url_for
+from flask import render_template, session, redirect, url_for, abort
 from flask.ext.login import login_required
 
 from . import main
@@ -36,7 +36,7 @@ def for_moderators_only():
 
 @main.route('/user/<username>')
 def user(username):
-    user = User.query.filter_by(name=username)
+    user = User.query.filter_by(username=username).first()
     if user is None:
         abort(404)
     return render_template('user.html', user=user)

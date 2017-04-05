@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_jquery() }}
+{{ moment.include_moment() }}
+{% endblock scripts %}
+
+
 {% block page_content %}
 {{ super() }}
 <div class="page-header">
@@ -24,9 +32,9 @@
     {% if user.about_me %}
     <p>{{ user.about_me }} </p>
     {% endif %}
-    <p>
-        Member since {{ moment(user.member_since).format('L') }}.
-        Last seen {{ moment(user.last_seen).format('L')}}.
+    <p>      
+        Member since {{ moment(user.member_since).format('L') }}.<br>
+        Last seen {{ moment(user.last_seen).fromNow()}}.
     </p>
 </div>
 

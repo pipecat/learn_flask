@@ -53,3 +53,7 @@ Flasky
     {% block page_content %}{% endblock page_content %}
 </div>
 {% endblock content %}
+
+{% block scripts %}
+{{ moment.include_moment()}}
+{% endblock scripts %}
