@@ -19,7 +19,7 @@ def index():
                             form=form, name=session.get('name'),
                             known=session.get('known', False),
                             current_time=datetime.utcnow())
-    '''
+    ''' 
     return render_template('index.html')
 
 @main.route('/testadmin')
@@ -40,3 +40,11 @@ def user(username):
     if user is None:
         abort(404)
     return render_template('user.html', user=user)
+
+@main.app_errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+@main.app_errorhandler(500)
+def internal_server_error(e):
+    return render_template('500.html'), 500
