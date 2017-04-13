@@ -47,6 +47,8 @@
         Edit Profile [Admin]
     </a>
     {% endif %}
+    <h3>Post by {{ user.username }}</h3>
+    {% include "_posts.html" %}
 </div>
 
 {% endblock page_content %}
