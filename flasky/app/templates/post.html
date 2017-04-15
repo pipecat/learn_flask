@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}
+Flasky
+{% endblock title %}
+
+{% block page_content %}
+{{ super() }}
+
+{% include "_posts.html" %}
+
+{% endblock page_content %}
