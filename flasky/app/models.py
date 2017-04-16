@@ -130,6 +130,7 @@ class User(UserMixin, db.Model):
         self.member_since = datetime.utcnow()
         if self.email is not None and self.avatar_hash is None:
             self.avatar_hash = hashlib.md5(self.email.encode('utf-8')).hexdigest()
+        self.follow(self)
 
 
     def __repr__(self):
@@ -218,6 +219,18 @@ class User(UserMixin, db.Model):
 
     def is_followed_by(self, user):
         return self.followers.filter_by(follower_id=user.id).first() is not None
+
+    @property
+    def followed_posts(self):
+        return Post.query.join(Follow, Follow.followed_id == Post.author_id).filter(Follow.follower_id == self.id)
+
+    @staticmethod
+    def add_self_follows():
+        for user in User.query.all():
+            if not user.is_following(user):
+                user.follow(user)
+                db.session.add(user)
+                db.session.commit()
 
 class AnonymousUer(AnonymousUserMixin):
     def can(self, permissions):
