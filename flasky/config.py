@@ -12,6 +12,7 @@ class Config:
     FLASKY_ADMIN = 'pipecat@qq.com'
     FLASKY_POSTS_PER_PAGE = 10
     FLASKY_FOLLOWERS_PER_PAGE = 10
+    FLASKY_COMMENTS_PER_PAGE = 10
 
     @staticmethod
     def init_app(app):

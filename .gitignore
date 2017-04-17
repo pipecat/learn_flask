@@ -1,3 +1,4 @@
+flasky/migrations
 .sqlite
 email_user.py
 requirements.txt
