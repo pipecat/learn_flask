@@ -29,6 +29,7 @@ div.post-date {
     float: right;
 }
 div.post-author {
+    margin-left: 48px;
     font-weight: bold;
 }
 div.post-thumbnail {
@@ -36,7 +37,7 @@ div.post-thumbnail {
 }
 div.post-content {
     margin-left: 48px;
-    min-height: 48px;
+    min-height: 48px; 
 }
 div.post-footer {
     text-align: right;
