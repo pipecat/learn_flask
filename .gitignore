@@ -1,5 +1,6 @@
-flasky/migrations
-.sqlite
+requirements.txt
+flasky/migrations/
+*.sqlite
 email_user.py
 requirements.txt
 .pyc
