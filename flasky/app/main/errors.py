@@ -14,7 +14,7 @@ def page_not_found(e):
 		response = jsonify({'error': 'notfound'})
 		response.status_code = 404
 		return response
-	response render_template('404.html'), 404
+	return render_template('404.html'), 404
 
 
 def forbidden(message):
