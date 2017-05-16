@@ -141,7 +141,7 @@ class User(UserMixin, db.Model):
                                 backref=db.backref('follower', lazy='joined'),
                                 lazy='dynamic',
                                 cascade='all, delete-orphan')
-    comments = db.relationship('Comment', backref='author',                        lazy='dynamic')
+    comments = db.relationship('Comment', backref='author', lazy='dynamic')
 
 
     def __init__(self,  **kwargs):
@@ -273,7 +273,7 @@ class User(UserMixin, db.Model):
 
     def to_json(self):
         json_user = {
-            'url': url_for('api.get_user': id=self.id, _external=True),
+            'url': url_for('api.get_user', id=self.id, _external=True),
             'username': self.username,
             'member_since': self.member_since,
             'last_seen': self.last_seen,

@@ -8,7 +8,6 @@ from .. import db
 
 
 @api.route('/posts/')
-@auth.login_required
 def get_posts():
 	page = request.args.get('page', 1, type=int)
 	pagination = Post.query.paginate(page, per_page=current_app.config['FLASKY_POST_PER_PAGE'], error_out=False)

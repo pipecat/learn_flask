@@ -23,12 +23,6 @@ def auth_error():
 	return unauthorized('Invalid creentials')
 
 
-@api.route('/posts/')
-@auth.login_required
-def get_posts():
-	pass
-
-
 @api.before_request
 @auth.login_required
 def before_request():
