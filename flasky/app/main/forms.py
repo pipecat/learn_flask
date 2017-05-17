@@ -1,5 +1,5 @@
-from flask.ext.wtf import Form
-from flask.ext.pagedown.fields import PageDownField
+from flask_wtf import Form
+from flask_pagedown.fields import PageDownField
 from wtforms import StringField, BooleanField, TextField, SubmitField, SelectField, BooleanField
 from wtforms.validators import Required, Length, Email, Regexp
 from wtforms import ValidationError

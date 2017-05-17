@@ -13,6 +13,7 @@ class Config:
     FLASKY_POSTS_PER_PAGE = 10
     FLASKY_FOLLOWERS_PER_PAGE = 10
     FLASKY_COMMENTS_PER_PAGE = 10
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
 
     @staticmethod
     def init_app(app):
