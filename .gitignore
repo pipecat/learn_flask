@@ -1,4 +1,4 @@
-.vscode/
+flasky/.vscode/
 *.pyc
 requirements.txt
 flasky/migrations/
