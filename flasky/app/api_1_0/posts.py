@@ -10,7 +10,7 @@ from .. import db
 @api.route('/posts/')
 def get_posts():
 	page = request.args.get('page', 1, type=int)
-	pagination = Post.query.paginate(page, per_page=current_app.config['FLASKY_POST_PER_PAGE'], error_out=False)
+	pagination = Post.query.paginate(page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'], error_out=False)
 	posts = pagination.items
 	prev = None
 	if pagination.has_prev:
@@ -27,7 +27,7 @@ def get_posts():
 
 @api.route('/posts/<int:id>')
 @auth.login_required
-def get_post():
+def get_post(id):
 	post = Post.query.get_or_404(id)
 	return jsonify(post.to_json())
 
